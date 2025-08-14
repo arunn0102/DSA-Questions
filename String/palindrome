@@ -1,0 +1,45 @@
+// 1st way............
+class Main {
+    public static void main(String[] args) {
+        String s1 = "racecara"; 
+        int j = s1.length()-1;
+        boolean isPalindrome = true;
+        for(int i= 0;i<s1.length()/2;i++){
+        if(s1.charAt(i)!=s1.charAt(j)){
+          isPalindrome = false;
+          break;
+        }
+        j--;
+        }
+        if(isPalindrome){
+            System.out.println("palindrome");
+        } else {
+            System.out.println(" not palindrome");
+        }
+    }
+}
+
+
+// 2nd way..........
+class Main {
+    public static void main(String[] args) {
+        String s1 = "racecar";
+        boolean res = palindrome(s1);
+        System.out.println(res);
+    }
+    
+    static boolean palindrome(String s){
+        int i =0;
+        int j = s.length()-1;
+        while(i<=j){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+
+

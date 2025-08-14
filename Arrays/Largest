@@ -1,0 +1,15 @@
+package Arrays;
+import java.util.*;
+class  Largest{
+    public static void main(String[] args) {
+        int[] arr = {2,6,1,8,7};
+        System.out.println("The largest element is" + sort(arr));
+        
+        
+    }
+    static int sort(int arr[]){
+Arrays.sort(arr);
+return arr[arr.length-1];
+
+    }
+}

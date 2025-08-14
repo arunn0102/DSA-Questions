@@ -1,0 +1,49 @@
+class Main {
+
+    public static void findDuplicates(String str) {
+        str = str.toLowerCase(); // Optional: ignore case
+        String checked = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (checked.indexOf(ch) != -1) {
+                continue; // already processed
+            }
+
+            int count = 0;
+            for (int j = 0; j < str.length(); j++) {
+                if (str.charAt(j) == ch) {
+                    count++;
+                }
+            }
+
+            if (count > 1) {
+                System.out.println("Duplicate character: " + ch);
+            }
+
+            checked += ch; // mark as processed
+        }
+    }
+
+    public static void main(String[] args) {
+        String input = "programming";
+        findDuplicates(input);  
+    }
+}
+
+
+
+function findDuplicatesSimple(arr) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+       result.push(arr[i]);
+        break; // avoid adding the same duplicate multiple times
+      }
+    }
+  }
+  return result;
+}
+console.log(findDuplicatesSimple([1, 2, 3, 2, 4, 1]));

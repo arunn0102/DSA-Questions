@@ -1,0 +1,55 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+class Main {
+    static Node rotate(Node head, int k){
+        int len=1;
+        Node tail=head;
+        while(tail.next!=null){
+            len++;
+            tail=tail.next;
+        }
+        
+        k = k % len;
+        if(k==0) return head;
+        tail.next=head;
+        
+        Node newTail=head;
+        for(int i=1;i<len-k;i++){
+            newTail=newTail.next;
+        }
+        
+        Node newHead = newTail.next;
+        newTail.next = null;
+        // The line tail.next = head is used to temporarily connect the end of the list to the beginning, forming a circular linked list so that we can rotate easily.
+
+       return newHead;
+    }
+    
+    static void printList(Node head) {
+        while (head != null) {
+            System.out.print(head.data + " -> ");
+            head = head.next;
+        }
+        System.out.println("null");
+    }
+    
+    public static void main(String[] args) {
+       Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = new Node(4);
+        head.next.next.next.next = new Node(5);
+        
+        int k = 2;
+        Node result=rotate(head,k);
+        printList(result);
+
+    }
+}

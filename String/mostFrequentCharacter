@@ -1,0 +1,56 @@
+function mostFrequentChar(str) {
+  let maxChar = '';
+  let maxCount = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let count = 0;
+
+    for (let j = 0; j < str.length; j++) {
+      if (str[i] === str[j]) {
+        count++;
+      }
+    }
+
+    if (count > maxCount) {
+      maxCount = count;
+      maxChar = str[i];
+    }
+  }
+
+  return maxChar;
+}
+
+
+
+function mostFrequentChar(str) {
+  let freq = {};
+  let maxChar = '', maxCount = 0;
+
+  for (let ch of str) {
+    freq[ch] = (freq[ch] || 0) + 1;
+    if (freq[ch] > maxCount) {
+      maxChar = ch;
+      maxCount = freq[ch];
+    }
+  }
+  return maxChar;
+}
+
+
+let name = "hello"
+console.log(count(name))
+
+
+function count(str){
+    let count = {}
+    let max=0;
+    let maxchar=''
+    for(let char of str){
+        count[char] = (count[char]||0) + 1
+        if(max<count[char]){
+            max=count[char]
+            maxchar=char
+        }
+    }
+    return maxchar
+}

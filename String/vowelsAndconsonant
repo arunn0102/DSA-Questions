@@ -1,0 +1,36 @@
+class Main {
+    public static void main(String[] args) {
+        String s1 = "racecar";
+        vowcons(s1);
+    }
+    
+    static void vowcons(String s){
+        int vowels=0, consonant =0;
+        s=s.toLowerCase();
+        for(int i=0;i<=s.length()-1;i++){
+            char ch=s.charAt(i);
+            if(ch>='a' && ch<='z'){
+                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'){
+                    vowels++;
+                }
+                else{
+                    consonant++;
+                }
+            }
+        }
+        System.out.println("Vowels are " + vowels);
+        System.out.println("Consonant are " + consonant);
+    }
+}
+
+
+console.log(vowels("arun verma is a bad boy"));
+function vowels(str){
+    let count=0;
+    for(let char of str){
+        if("aeiou".includes(char)){
+            count++;
+        }
+    }
+    return count;
+}

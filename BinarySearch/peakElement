@@ -1,0 +1,33 @@
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {10, 20, 15, 17, 23, 90, 67};
+        int n = arr.length;
+        int peakIndex = findPeakElement(arr, n);
+        System.out.println("Peak element is " + arr[peakIndex] + " at index " + peakIndex);
+    }
+
+    static int findPeakElement(int[] arr, int n) {
+        int low = 0, high = n - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            // Handle boundaries and check if arr[mid] is peak
+            if ((arr[mid] >= arr[mid - 1]) &&
+                (arr[mid] >= arr[mid + 1])) {
+                return mid;
+            }
+
+            // Move to the side that has a bigger neighbor
+            if (arr[mid - 1] > arr[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return -1; // Not expected for non-empty arrays
+    }
+}
+
+// Note : some edge cases must be present so that array can't be affected by index out of bound

@@ -1,0 +1,120 @@
+// 1. Brute force approach...........
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {3,6,7,11};
+        int h = 8;
+        System.out.println(speed(arr,h));
+    }
+    
+    static int speed(int arr[],int h){
+        int max = getMax(arr);
+        for(int i=1;i<=max;i++){
+            int reqTime = time(arr,i);
+            if(reqTime<=h)
+            return i;
+        }
+        return max;
+    }
+    
+    static int time(int arr[],int speed){
+        int totaltime = 0;
+        for(int i=0;i<arr.length;i++){
+            totaltime+=(arr[i]+speed-1)/speed;
+        }
+        return totaltime;
+    }
+    
+    static int getMax(int[] arr) {
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) max = num;
+        }
+        return max;
+    }
+}
+
+// 2. Binary Search..........
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {3, 6, 7, 11};
+        int h = 8;
+        System.out.println(speed(arr, h));
+    }
+
+    static int speed(int[] arr, int h) {
+        int low = 1;
+        int high = getMax(arr);
+        int ans = high; // worst case
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int reqTime = time(arr, mid);
+
+            if (reqTime <= h) {
+                ans = mid;        // ✅ Possible answer found
+                high = mid - 1;   // 🔍 Try smaller speed
+            } else {
+                low = mid + 1;    // ❌ Too slow, increase speed
+            }
+        }
+
+        return ans;
+    }
+
+    static int time(int arr[], int speed) {
+        int totalTime = 0;
+        for (int i = 0; i < arr.length; i++) {
+            totalTime += (arr[i] + speed - 1) / speed;
+        }
+        return totalTime;
+    }
+
+    static int getMax(int[] arr) {
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) max = num;
+        }
+        return max;
+    }
+}
+
+
+
+// Javascript.................
+
+let arr=[3,6,7,11]
+let h=8
+console.log(koko(arr,h));
+
+function max(arr){
+    let maxi=arr[0]
+    for(let i=1;i<arr.length;i++){
+        if(arr[i]>maxi){
+            maxi=arr[i]
+        }
+    }
+    return maxi
+}
+
+function koko(arr,h){
+    let low=1, high=max(arr), ans=Number.MAX_VALUE;
+    while(low<=high){
+        let mid=Math.floor((low+high)/2)
+        let reqtime= count(arr,mid)
+        if(reqtime<=h){
+            ans=mid
+            high=mid-1
+        } else {
+            low=mid+1
+        }
+    }
+    return ans
+}
+
+function count(arr,hours){
+    let totalhr=0
+    for(let i=0;i<arr.length;i++){
+        totalhr+=Math.ceil(arr[i]/hours)
+    }
+    return totalhr
+}

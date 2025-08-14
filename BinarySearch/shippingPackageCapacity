@@ -1,0 +1,98 @@
+class Main {
+    public static void main(String[] args) {
+        int weight[] = {1,2,3,4,5,6,7,8,9,10};
+        int days = 5;
+        System.out.println(ship(weight,days));
+    }
+    
+    static int ship(int weight[], int day){
+        int low = getMax(weight); 
+        int high = getSum(weight);
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            int nodays = daysReq(weight,mid);
+            if(nodays<=day){
+                high=mid-1;
+            } else low = mid+1;
+        }
+        return low;
+    }
+    
+    static int daysReq(int weight[], int cap){
+        int days=1, load=0;
+        for(int i=0;i<weight.length;i++){
+            if(weight[i]+load>cap){
+                days++;
+                load=weight[i];
+            } else load+=weight[i];
+        }
+        return days;
+    }
+    
+    public static int getMax(int[] arr) {
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) max = num;
+        }
+        return max;
+    }
+    
+     public static int getSum(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return sum;
+    }
+}
+
+
+
+// JavaScript.................
+
+let arr=[1,2,3,4,5,6,7,8,9]
+let days=5
+console.log(ship(arr,days));
+
+function ship(arr,days){
+    let low=max(arr), high = sum(arr);
+    while(low<=high){
+        let mid=Math.floor((low+high)/2)
+        if(weight(arr,mid)<=days){
+            high=mid-1
+        } else {
+            low=mid+1
+        }
+    }
+    return low
+}
+
+function weight(arr,cap){
+    let load=0 , day=1
+    for(let i=0;i<arr.length;i++){
+        if(load+arr[i]>cap){
+            day+=1
+            load=arr[i]
+        }
+        load+=arr[i]
+    }
+    return day
+}
+
+function max(arr){
+    let maxi=0
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]>maxi){
+            maxi=arr[i]
+        }
+    }
+    return maxi
+}
+
+function sum(arr){
+let sum=0
+for(let i=0;i<arr.length;i++){
+    sum+=arr[i]
+}
+return sum
+} 

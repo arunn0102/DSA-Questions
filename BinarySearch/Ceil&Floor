@@ -1,0 +1,40 @@
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {2,3,4,10,15,17};
+        int target = 10;
+        // int result = lb(arr,target);
+        System.out.println("CEIL Value is " + ceil(arr,target) + " and the floor value is " + floor(arr,target));
+    }
+    
+    static int ceil(int arr[], int target){
+        int low = 0;
+        int high = arr.length-1;
+        int ans = arr.length;
+        
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(arr[mid]>=target) {
+                ans = arr[mid];
+                high = mid-1;
+            } else low = mid + 1;
+            }
+        return ans;
+    }
+    
+     static int floor(int arr[], int target){
+        int low = 0;
+        int high = arr.length-1;
+        int ans = arr.length;
+        
+        while(low<=high){
+             int mid = (low + high) / 2;
+            if (arr[mid] <= target){
+                ans = arr[mid];      // potential answer
+                low = mid + 1;       // look right for bigger candidate
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+}

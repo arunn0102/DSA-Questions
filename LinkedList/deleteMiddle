@@ -1,0 +1,65 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+class Main {
+    static Node delmiddle(Node head){
+        if(head==null) return null;
+        Node slow=head;
+        Node fast=head;
+        fast=head.next.next;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        slow.next=slow.next.next;
+        return head;
+    }
+    
+    
+    static void printList(Node head) {
+        while (head != null) {
+            System.out.print(head.data + " -> ");
+            head = head.next;
+        }
+        System.out.println("null");
+    }
+    
+    public static void main(String[] args) {
+        Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = new Node(4);
+        head.next.next.next.next = new Node(5);
+        
+        Node result = delmiddle(head);
+        printList(result);
+
+    }
+}
+
+// Note : This skips ahead before entering the loop, which may fail for short lists (like length 2 or 3) and can cause a NullPointerException.
+
+static Node delmiddle(Node head){
+    if(head == null || head.next == null) return null;  // Handle empty or 1-node list
+
+    Node slow = head;
+    Node fast = head;
+    Node prev = null;
+
+    while(fast != null && fast.next != null){
+        fast = fast.next.next;
+        prev = slow;
+        slow = slow.next;
+    }
+
+    // slow is at the middle, prev is before middle
+    prev.next = slow.next;
+
+    return head;
+}

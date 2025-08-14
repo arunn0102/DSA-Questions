@@ -1,0 +1,89 @@
+// 1. Unique element in the Array.........
+
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {7, 8, 9, 1, 2, 3, 4, 5};
+        int target = 5;
+        System.out.println("Target found at index: " + rotated(arr, target));
+    }
+
+    static int rotated(int[] arr, int target) {
+        int low = 0, high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            // ✅ Base case: target found
+            if (arr[mid] == target)
+                return mid;
+
+            // 🔍 Left half is sorted
+            if (arr[low] <= arr[mid]) {
+                if (arr[low] <= target && target < arr[mid]) {
+                    high = mid - 1; // Target in left half
+                } else {
+                    low = mid + 1; // Target in right half
+                }
+            }
+            // 🔍 Right half is sorted
+            else {
+                if (arr[mid] < target && target <= arr[high]) {
+                    low = mid + 1; // Target in right half
+                } else {
+                    high = mid - 1; // Target in left half
+                }
+            }
+        }
+
+        return -1; // Target not found
+    }
+}
+
+
+// 2. Duplicate element in the Array.........
+
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {2, 2, 2, 3, 4, 2};
+        int target = 2;
+        System.out.println("Target found at index: " + rotated(arr, target));
+    }
+
+    static int rotated(int[] arr, int target) {
+        int low = 0, high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            // ✅ Base case: target found
+            if (arr[mid] == target)
+                return mid;
+                
+                if(arr[low]==arr[mid] && arr[mid]==arr[high]){
+                    high--;
+                    low++;
+                    continue;
+                }
+
+            // 🔍 Left half is sorted
+            if (arr[low] <= arr[mid]) {
+                if (arr[low] <= target && target < arr[mid]) {
+                    high = mid - 1; // Target in left half
+                } else {
+                    low = mid + 1; // Target in right half
+                }
+            }
+            // 🔍 Right half is sorted
+            else {
+                if (arr[mid] < target && target <= arr[high]) {
+                    low = mid + 1; // Target in right half
+                } else {
+                    high = mid - 1; // Target in left half
+                }
+            }
+        }
+
+        return -1; // Target not found
+    }
+}
+

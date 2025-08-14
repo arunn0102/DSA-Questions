@@ -1,0 +1,35 @@
+class Main {
+    public static void main(String[] args) {
+        int n = 62;
+        System.out.println(sqrt(n));
+        
+    }
+    
+    static int sqrt(int n){
+        int low = 0, high =n;
+        int ans = 0;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(mid*mid==n) return mid;
+            if(mid*mid>n){
+                ans = mid;
+                high = mid-1;
+            } else low = mid + 1;
+        }
+        return ans;
+    }
+}
+
+
+let n=25
+console.log(sqrt(n))
+
+function sqrt(n){
+    let ans=1
+    for(let i=1;i<=n;i++){
+        if(i*i<=n){
+            ans=i
+        } else break
+    }
+    return ans
+}

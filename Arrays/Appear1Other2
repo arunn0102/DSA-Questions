@@ -1,0 +1,39 @@
+let arr=[1,1,2,2,3,4,4]
+console.log(sort(arr))
+function sort(arr){
+    let all = []
+    for(let i=0;i<arr.length;i++){
+    let count=0;
+        let num = arr[i]
+         if (all.includes(num)) continue;
+        for(let j=0;j<arr.length;j++){
+            if(arr[j]==num) count++
+        }
+        // if(count==1) return num
+        if(count==2)
+        all.push(num)
+    }
+        return all
+}
+
+
+
+
+function appear(arr) {
+    let num=[]
+    for(let i=0;i<arr.length;i++){
+    let cnt=0
+        for(let j=0;j<arr.length;j++){
+            if(arr[j]==arr[i]){
+                cnt++
+            }
+        }
+        if(cnt==2 && !num.includes(arr[i])) {
+            num.push(arr[i])
+        }
+    }
+    return num
+}
+
+let arr=[1,1,2,3,3,4,4]
+console.log(appear(arr))

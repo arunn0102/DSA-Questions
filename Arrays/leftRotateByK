@@ -1,0 +1,98 @@
+import java.util.*;
+
+// 1st approach............
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {1,2,3,4,5,6};
+        arr = rotatebyk(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+    static int[] rotatebyk(int arr[]){
+        int temp[] = {1,2,3};
+        int d=2;
+        int n=arr.length;
+        for(int i=d;i<n;i++){
+            arr[i-d] = arr[i]; 
+        }
+        for(int i=n-d;i<n;i++){
+            arr[i] = temp[(i-(n-d))];
+        }
+        return arr;
+    }
+}
+
+// 2nd approach...........
+
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int arr[] = {1,2,3,4,5,6,7};
+       int n = arr.length;
+       int k = 2;
+        // Reverse first n-k elements
+       Reverse(arr, 0, n - k - 1);
+        // Reverse last k elements
+       Reverse(arr, n - k, n - 1);
+        // Reverse whole array
+       Reverse(arr, 0, n - 1);
+        System.out.println(Arrays.toString(arr));
+    }
+    static void Reverse(int arr[], int start, int last){
+        while(start<last){
+            int temp = arr[start];
+            arr[start] = arr[last];
+            arr[last] = temp;
+            start++;
+            last--;
+        }
+    }
+}
+
+
+// Chatgpt Approach.............
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int k = 2;
+        int[] result = leftRotate(arr, k);
+        System.out.println(Arrays.toString(result));  // Output: [3, 4, 5, 1, 2]
+    }
+
+    static int[] leftRotate(int[] arr, int k) {
+        int n = arr.length;
+        int[] rotated = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            rotated[(i - k + n) % n] = arr[i];
+        }
+
+        return rotated;
+    }
+}
+
+
+
+
+
+// Right Rotate by k............
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+       int[] arr = {1,2,3,4,5};
+       int k = 3;
+       int[] result = rotated(arr,k);
+       System.out.println(Arrays.toString(result));
+    }
+    
+    static int[] rotated(int arr[],int k){
+        int n = arr.length;
+        int[] rotated = new int[n];
+        for(int i=0;i<arr.length;i++){
+            rotated[(i + k) % n] = arr[i];
+        }
+        return rotated;
+    }
+}
