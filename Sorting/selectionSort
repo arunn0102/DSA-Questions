@@ -28,3 +28,19 @@ class Main {
     }
     
 }
+
+
+// JavaScript..............
+
+function selection(arr){
+    for(let i=0;i<arr.length-1;i++){
+        let mini = i
+        for(let j=i+1;j<arr.length;j++){
+            if(arr[j]<arr[mini]) mini = j
+        }
+        [arr[i],arr[mini]]=[arr[mini],arr[i]]
+    }
+    return arr
+}
+
+console.log(selection([5,9,2,0,1]))

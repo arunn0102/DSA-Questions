@@ -37,3 +37,28 @@ function appear(arr) {
 
 let arr=[1,1,2,3,3,4,4]
 console.log(appear(arr))
+
+
+
+// ....................................................
+let arr=[1,1,2,2,3,4,4]
+console.log(find(arr))
+
+function find(arr){
+    let res = []
+    
+    for(let i=0;i<arr.length;i++){
+        let num=arr[i]
+        let cnt=0;
+        for(let j=0;j<arr.length;j++){
+            if(arr[j]==num){
+                cnt++;
+            }
+        }
+        if(cnt==2 && !res.includes(num)){
+            res.push(num)
+        }
+    }
+            return res
+    
+}

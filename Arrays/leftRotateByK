@@ -50,6 +50,32 @@ class Main {
 }
 
 
+let arr=[1,2,3,4,5]
+let d=2
+let res=drotate(arr,d)
+console.log(res);
+
+function drotate(arr,d){
+    let n=arr.length
+    rev(arr,0,d-1)
+    rev(arr,d,n-1)
+    rev(arr,0,n-1)
+   
+   return arr
+}
+
+function rev(arr, start, end){
+    while(start<end){
+        let temp=arr[start]
+        arr[start]=arr[end]
+        arr[end]=temp
+        start++
+        end--
+    }
+    return arr
+}
+
+
 // Chatgpt Approach.............
 import java.util.*;
 

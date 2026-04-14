@@ -1,0 +1,10 @@
+let stack = []
+stack.push(10)
+stack.push(20)
+stack.push(30)
+console.log(stack)
+stack.pop(20)
+console.log(stack)
+
+// peek
+console.log(stack[stack.length-1])

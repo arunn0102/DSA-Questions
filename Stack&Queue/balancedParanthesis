@@ -1,0 +1,52 @@
+console.log(balanced("(())"));
+
+function balanced(str) {
+    let stack = [];
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === '(' || str[i] === '{' || str[i] === '[') {
+            stack.push(str[i]); // push opening bracket
+        } else {
+            if (stack.length === 0) return false; // no matching opening bracket
+            let char = stack.pop();
+
+            if ((str[i] === ')' && char !== '(') ||
+                (str[i] === '}' && char !== '{') ||
+                (str[i] === ']' && char !== '[')) {
+                return false; // mismatch
+            }
+        }
+    }
+
+    // only balanced if stack is empty at the end
+    return stack.length === 0;
+}
+
+
+
+// 2nd way.....................
+
+function isBalanced(str) {
+  let stack = [];
+  let pairs = {
+    ')': '(',
+    '}': '{',
+    ']': '['
+  };
+
+  for (let char of str) {
+    // if opening bracket, push to stack
+    if (char === '(' || char === '{' || char === '[') {
+      stack.push(char);
+    }
+    // if closing bracket, check stack
+    else if (char === ')' || char === '}' || char === ']') {
+      if (stack.length === 0 || stack.pop() !== pairs[char]) {
+        return false; // mismatch
+      }
+    }
+  }
+
+  // stack should be empty if balanced
+  return stack.length === 0;
+}
