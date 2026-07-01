@@ -16,3 +16,30 @@ class Main {
         return Arrays.equals(a,b);
     }
 }
+
+// 2nd Approach.............
+
+function isAnagram(s1, s2) {
+    return s1.split("").sort().join("") ===
+           s2.split("").sort().join("");
+}
+
+
+// ......................
+function isAnagram(s1, s2) {
+    if (s1.length !== s2.length) return false;
+
+    let freq = {};
+
+    for (let ch of s1) {
+        freq[ch] = (freq[ch] || 0) + 1;
+    }
+
+    for (let ch of s2) {
+        if (!freq[ch]) return false;
+        freq[ch]--;
+    }
+
+    return true;
+}
+

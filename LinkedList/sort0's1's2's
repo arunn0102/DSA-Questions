@@ -128,3 +128,53 @@ class Main {
         printList(result);
     }
 }
+
+
+
+// JavaScript implementation.........
+function sort012(head) {
+
+    if (head == null || head.next == null)
+        return head;
+
+    // Dummy nodes
+    let zeroHead = { next: null };
+    let oneHead = { next: null };
+    let twoHead = { next: null };
+
+    let zero = zeroHead;
+    let one = oneHead;
+    let two = twoHead;
+
+    let temp = head;
+
+    // Divide nodes into 0,1,2 lists
+    while (temp != null) {
+
+        if (temp.data == 0) {
+            zero.next = temp;
+            zero = zero.next;
+        }
+
+        else if (temp.data == 1) {
+            one.next = temp;
+            one = one.next;
+        }
+
+        else {
+            two.next = temp;
+            two = two.next;
+        }
+
+        temp = temp.next;
+    }
+
+    // Join lists
+    zero.next = oneHead.next ? oneHead.next : twoHead.next;
+
+    one.next = twoHead.next;
+
+    two.next = null;
+
+    return zeroHead.next;
+}
