@@ -21,7 +21,7 @@ function mostFrequentChar(str) {
 }
 
 
-
+// Easy Aooroach..................
 function mostFrequentChar(str) {
   let freq = {};
   let maxChar = '', maxCount = 0;
