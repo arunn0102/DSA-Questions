@@ -1,0 +1,11 @@
+function vowels(str){
+
+    let count=0;
+    let v="aeiouAEIOU";
+
+    for(let ch of str){
+        if(v.includes(ch))
+            count++;
+    }
+    return count;
+}
