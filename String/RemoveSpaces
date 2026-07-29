@@ -1,0 +1,13 @@
+function removeSpaces(str) {
+
+    let ans = "";
+
+    for (let ch of str) {
+        if (ch !== " ") {
+            ans += ch;
+        }
+    }
+    return ans;
+}
+
+console.log(removeSpaces("Hello World"));
