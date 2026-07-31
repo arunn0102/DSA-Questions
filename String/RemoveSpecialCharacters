@@ -1,0 +1,17 @@
+function removeSpecial(str) {
+
+    let ans = "";
+
+    for (let ch of str) {
+        if (
+            (ch >= 'a' && ch <= 'z') ||
+            (ch >= 'A' && ch <= 'Z') ||
+            (ch >= '0' && ch <= '9')
+        ) {
+            ans += ch;
+        }
+    }
+    return ans;
+}
+
+console.log(removeSpecial("abc@123#$"));
