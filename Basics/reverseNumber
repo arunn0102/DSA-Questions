@@ -11,3 +11,8 @@ function reverseNumber(num){
 
     return reverse;
 }
+
+
+// Easy way..........
+let num = 543
+console.log(num.toString().split("").reverse().join(""))
