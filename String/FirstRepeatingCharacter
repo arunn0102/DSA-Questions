@@ -1,0 +1,16 @@
+function firstRepeat(str) {
+
+    let set = new Set();
+
+    for (let ch of str) {
+
+        if (set.has(ch)) {
+            return ch;
+        }
+        set.add(ch);
+    }
+    
+    return null;
+}
+
+console.log(firstRepeat("abcade"));
