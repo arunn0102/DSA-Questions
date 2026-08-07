@@ -1,0 +1,19 @@
+function removeDuplicate(str) {
+
+    let seen = {};
+    let ans = "";
+
+    for (let ch of str) {
+
+        if (!seen[ch]) {
+
+            seen[ch] = true;
+            ans += ch;
+
+        }
+    }
+
+    return ans;
+}
+
+console.log(removeDuplicate("programming"));
