@@ -1,0 +1,6 @@
+function contains(str, target) {
+
+    return str.includes(target);
+}
+
+console.log(contains("Hello World", "World"));
