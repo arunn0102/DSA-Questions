@@ -82,9 +82,27 @@ function allzeroend(arr) {
 }
 
 console.log(allzeroend(arr));
-// Output: [1, 2, 3, 1, 4, 5, 0, 0, 0, 0]
 
 
+
+// Two pointer method...........
+
+let arr = [1, 2, 0, 3, 0, 1, 4, 0, 0, 5];
+console.log(allzeroend(arr));
+
+function allzeroend(arr) {
+  let nonZeroIndex = 0;
+
+  // Move all non-zero elements forward
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      [arr[nonZeroIndex], arr[i]] = [arr[i], arr[nonZeroIndex]];
+      nonZeroIndex++;
+    }
+  }
+
+  return arr;
+}
 
 
 
