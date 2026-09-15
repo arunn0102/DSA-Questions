@@ -83,3 +83,20 @@ function allzeroend(arr) {
 
 console.log(allzeroend(arr));
 // Output: [1, 2, 3, 1, 4, 5, 0, 0, 0, 0]
+
+
+
+
+
+// another method..........
+
+function allzeroend(arr) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    for (let j = i - 1; j >= 0; j--) {
+      if (arr[j] === 0) {
+        [arr[j], arr[i]] = [arr[i], arr[j]];
+      }
+    }
+  }
+  return arr;
+}
