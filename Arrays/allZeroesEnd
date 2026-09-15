@@ -67,3 +67,19 @@ class Main {
     return arr;
     }
 }
+
+
+
+// Using filer method.......
+
+let arr = [1, 2, 0, 3, 0, 1, 4, 0, 0, 5];
+
+function allzeroend(arr) {
+  const nonZeros = arr.filter(num => num !== 0);
+  const zeros = arr.filter(num => num === 0);
+  
+  return [...nonZeros, ...zeros];
+}
+
+console.log(allzeroend(arr));
+// Output: [1, 2, 3, 1, 4, 5, 0, 0, 0, 0]
